@@ -1,0 +1,17 @@
+{
+  "name": "slack-enchanter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "slackEnchanter.js",
+  "scripts": {
+    "start": "node slackEnchanter.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "p1kalys",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^17.2.1"
+  }
+}
