@@ -39,7 +39,9 @@ const generateMessage = (systemMessage) => {
       { role: "system", content: systemMessage },
       { role: "user", content: messageElement.innerText.trim() },
     ],
-    model: "llama3-70b-8192",
+    model: "openai/gpt-oss-20b",
+    max_tokens: 256,
+    temperature: 0.7,
   };
 
   fetch("https://api.groq.com/openai/v1/chat/completions", {
@@ -92,10 +94,10 @@ const addButtonsToToolbar = () => {
   };
 
   const correctMessage =
-    "Correct all spelling, grammar, and punctuation errors in the following text. Provide the corrected version only, without any additional comments or preambles.";
+    "Correct all spelling, grammar, and punctuation errors in the following text. Output only the fully corrected version of the text. Do not add explanations, comments, examples, or formatting. If the input is already correct, return it unchanged. If the input is empty or nonsensical, return an empty string.";
 
   const professionalMessage =
-    "Rephrase the following message to reflect a formal and professional tone suitable for a corporate setting. Return only the updated text without any prefatory remarks.";
+    "Rephrase the following message so it is clear, concise, and professional in tone, suitable for a corporate setting. Output only the rephrased message, with no explanations, comments, or formatting. If the input is already appropriate, return it unchanged. If the input is empty or nonsensical, return an empty string.";
 
   toolbar.appendChild(createButton("Correct", correctMessage));
   toolbar.appendChild(createButton("Professional", professionalMessage));
